@@ -13,7 +13,8 @@ function sendAccessToken() {
         method: "POST",
         body: JSON.stringify({ accessToken: accessToken }),
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": window.location.origin
         }
     });
 }
