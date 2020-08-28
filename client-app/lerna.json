@@ -1,0 +1,4 @@
+{
+    "packages": ["convert-usd-to-lkr", "currency-converter", "sdk"],
+    "version": "1.0.375"
+}
