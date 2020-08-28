@@ -94,11 +94,13 @@
         </div>
     </body>
     <script src="/js-oidc-sdk/main.js"></script>
+
     <script src="/convert-usd-to-lkr/index.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios@0.20.0/dist/axios.min.js"></script>
     <script>
         var serverOrigin = "https://localhost:9443";
-        var clientHost = "http://localhost:3000";
+        var clientHost = "http://localhost:4000";
 
         // Instantiate the `IdentityClient` singleton
         var auth = AsgardioAuth.IdentityClient.getInstance();
@@ -128,7 +130,7 @@
             baseUrls: [serverOrigin],
             callbackURL: clientHost,
             clientHost: clientHost,
-            clientID: "oNYe7ML9smdwuR5olarViTTL_iga",
+            clientID: "4HDkyVLkgJNJEivqeBLcu4PfI68a",
             enablePKCE: true,
             serverOrigin: serverOrigin,
             storage: "sessionStorage"
@@ -141,8 +143,8 @@
                 "<div class='text-box'><input type='text' label='Enter USD' id='usd'/></div>" +
                 "<button onclick='convertDollarToRupees()'>Convert</button>";
 
-            authenticate.setAccessToken(sessionStorage.getItem("access_token"));
-            sessionStorage.removeItem("access_token");
+           /*  authenticate.setAccessToken(sessionStorage.getItem("access_token"));
+            sessionStorage.removeItem("access_token"); */
 
             isAuthenticated = true;
         });
@@ -169,7 +171,7 @@
                 return;
             }
 
-            authenticate.sendRequest({
+            /* authenticate.sendRequest({
                 url: serverOrigin + "/api/identity/user/v1.0/me",
                 method: "GET",
                 headers: {
@@ -183,8 +185,9 @@
                         "<b>Last name:</b> " + response.data.basic[ "http://wso2.org/claims/lastname" ];
                     document.getElementById("roles").innerHTML =
                         "<b>Role:</b> " + response.data.basic[ "http://wso2.org/claims/role" ];
-            });
-            /*
+            }); */
+
+
             auth.httpRequest({
                 url: serverOrigin + "/api/identity/user/v1.0/me",
                 method: "GET",
@@ -199,7 +202,7 @@
                     "<b>Last name:</b> " + response.data.basic["http://wso2.org/claims/lastname"];
                 document.getElementById("roles").innerHTML =
                     "<b>Role:</b> " + response.data.basic["http://wso2.org/claims/role"];
-            }); */
+            });
         }
 
         function convertDollarToRupees() {
